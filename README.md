@@ -5,7 +5,7 @@
 National Chung Hsing University · Providence University · ASUSTeK Computer Inc., Taiwan
 
 [![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](https://arxiv.org/)
-[![Status](https://img.shields.io/badge/IEEE%20TCSVT-under%20review-blue.svg)]()
+[![Status](https://img.shields.io/badge/IEEE%20-under%20review-blue.svg)]()
 [![Code](https://img.shields.io/badge/code-released%20upon%20acceptance-lightgrey.svg)]()
 
 One 7.95M-parameter model produces the ×2, ×4, and ×8 results of an input in a single forward pass. It has the highest PSNR among the compared multi-scale methods in every ×4 and ×8 entry. At ×8 it outperforms the ×8-specific DRN-L on all five standard benchmarks, gives the best Urban100 result among the compared methods, and stays within 0.13 dB of the strongest ×8-specific models elsewhere.
@@ -49,8 +49,6 @@ One 7.95M-parameter model produces the ×2, ×4, and ×8 results of an input in 
 ### One network instead of a three-model ladder
 
 ![Mean x8 PSNR vs. parameters needed for x2/x4/x8](assets/ladder_scatter_x8_mean.png)
-
-![x8 Urban100 PSNR vs. parameters needed for x2/x4/x8](assets/ladder_scatter_x8_urban100.png)
 
 <sub>Single-scale methods count as three models; where only one size is reported, it is tripled (values from the paper's Tables I and III).</sub>
 
