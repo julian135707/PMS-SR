@@ -4,7 +4,7 @@
 
 National Chung Hsing University · Providence University · ASUSTeK Computer Inc., Taiwan
 
-[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](https://arxiv.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.03390-b31b1b.svg)](https://arxiv.org/abs/2611.03390)
 [![Status](https://img.shields.io/badge/IEEE%20-under%20review-blue.svg)]()
 [![Code](https://img.shields.io/badge/code-released%20upon%20acceptance-lightgrey.svg)]()
 
@@ -80,13 +80,14 @@ The training and evaluation code and the pretrained weights will be released in 
 ## Citation
 
 ```bibtex
-@article{lin2026pmssr,
-  title   = {Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors
-             and Inter-Scale Mutual Refinement},
-  author  = {Lin, Chun-An and Chang, Yu-Chia and Fan, Chi-Mao and
-             Ouyang, Yen-Chieh and Liu, Tsung-Jung},
-  journal = {arXiv preprint arXiv:XXXX.XXXXX},
-  year    = {2026}
+@misc{lin2026progressivemultiscalesuperresolutioncascaded,
+      title={Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors and Inter-Scale Mutual Refinement}, 
+      author={Chun-An Lin and Yu-Chia Chang and Chi-Mao Fan and Yen-Chieh Ouyang and Tsung-Jung Liu},
+      year={2026},
+      eprint={2611.03390},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2611.03390}, 
 }
 ```
 
