@@ -150,14 +150,11 @@ The training and evaluation code and the pretrained weights will be released in 
 ## Citation
 
 ```bibtex
-@misc{lin2026progressivemultiscalesuperresolutioncascaded,
-      title={Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors and Inter-Scale Mutual Refinement}, 
-      author={Chun-An Lin and Yu-Chia Chang and Chi-Mao Fan and Yen-Chieh Ouyang and Tsung-Jung Liu},
-      year={2026},
-      eprint={2611.03390},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2611.03390}, 
+@article{lin2026progressive,
+  title={Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors and Inter-Scale Mutual Refinement},
+  author={Lin, Chun-An and Chang, Yu-Chia and Fan, Chi-Mao and Ouyang, Yen-Chieh and Liu, Tsung-Jung},
+  journal={arXiv preprint arXiv:2611.03390},
+  year={2026}
 }
 ```
 
