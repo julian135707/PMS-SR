@@ -5,10 +5,10 @@
 National Chung Hsing University · Providence University · ASUSTeK Computer Inc., Taiwan
 
 [![arXiv](https://img.shields.io/badge/arXiv-2611.03390-b31b1b.svg)](https://arxiv.org/abs/2611.03390)
-[![Status](https://img.shields.io/badge/IEEE%20-under%20review-blue.svg)]()
+[![Status](https://img.shields.io/badge/status-preprint-blue.svg)]()
 [![Code](https://img.shields.io/badge/code-released%20upon%20acceptance-lightgrey.svg)]()
 
-One 7.95M-parameter model produces the ×2, ×4, and ×8 results of an input in a single forward pass. Among multi-scale methods, it has the highest PSNR in every ×4 and ×8 entry on all five standard benchmarks. It also outperforms the ×8-specific DRN-L on all five benchmarks and gives the best ×8 Urban100 result among all compared methods.
+One 7.95M-parameter model produces the ×2, ×4, and ×8 results of an input in a single forward pass. Among multi-scale methods, it has the highest PSNR in every ×4 and ×8 entry on all five standard benchmarks. The model is smaller than every single-scale network it is compared with, although each of those networks covers only one factor. At ×8, it outperforms the ×8-specific DRN-L on all five benchmarks and gives the best Urban100 result among all compared methods.
 
 ![Graphical abstract](assets/graphical_abstract.png)
 
@@ -19,11 +19,13 @@ One 7.95M-parameter model produces the ×2, ×4, and ×8 results of an input in 
 | **×4 vs. multi-scale methods** | Best PSNR and SSIM on all 5 benchmarks (+0.06 to +0.36 dB PSNR over the runner-up) |
 | **×8 vs. multi-scale methods** | Best PSNR on all 5 benchmarks (+0.08 to +0.32 dB over the runner-up) and best SSIM on 4 of 5 |
 | **vs. ProSR-L, the strongest multi-scale baseline** | About half the parameters (7.95M vs. 15.50M), with higher PSNR in every ×4 and ×8 entry |
-| **vs. three SwinIR-M models** | 22% of the parameters and 2.9× faster (32.8 ms vs. 94.4 ms) |
+| **vs. single-scale models** | Smaller than every compared single-scale model (9.6M to 69.9M for one factor), while covering three factors |
+| **vs. three SwinIR-M models** | 22% of the parameters and 2.9× faster (32.8 ms vs. 94.4 ms) for all three outputs |
+| **×8 accuracy vs. model size** | Every other ×2/×4/×8 model set with a mean ×8 PSNR above 25.2 dB is at least 4.5× larger |
 
 ## Comparison with multi-scale methods
 
-Multi-scale methods address the same task as PMS-SR: one model serves several magnification factors. Values are Y-channel PSNR / SSIM, and bold marks the best value in each column.
+Multi-scale methods address the same task as PMS-SR: one model serves several magnification factors. This is the like-for-like comparison. Values are Y-channel PSNR / SSIM, and bold marks the best value in each column.
 
 ### ×8
 
@@ -44,6 +46,7 @@ Multi-scale methods address the same task as PMS-SR: one model serves several ma
 | MS-LapSRN | 0.22M | 31.74 / 0.889 | 28.26 / 0.774 | 27.43 / 0.731 | 25.51 / 0.768 | 29.54 / 0.897 |
 | MSWSR | 1.23M | 32.00 / 0.8913&dagger; | 28.47 / 0.7776 | 27.48 / 0.7311 | 25.78 / 0.7744 | 30.01 / 0.8999 |
 | MLWAN | 1.23M | 32.19 / 0.8957 | 28.55 / 0.7797 | 27.67 / 0.7429 | 25.89 / 0.7779 | 30.16 / 0.9110 |
+| CGSSR-LTE | 1.45M | 32.28 / – | 28.56 / – | 27.63 / – | 26.17 / – | 30.50 / – |
 | MDSR | 8.00M | 32.50 / 0.8973 | 28.72 / 0.7857 | 27.72 / 0.7418 | 26.67 / 0.8041 | 31.04 / 0.9145&dagger; |
 | ProSR-L | 15.50M | 32.53 / 0.8991&dagger; | 28.94 / 0.790 | 27.79 / 0.743 | 26.89 / 0.809 | 31.39 / 0.9181&dagger; |
 | **PMS-SR (ours)** | **7.95M** | **32.72** / **0.9012** | **29.00** / **0.7915** | **27.87** / **0.7464** | **27.25** / **0.8177** | **31.69** / **0.9222** |
@@ -61,13 +64,14 @@ At ×2, PMS-SR gives the best Urban100 result and is within 0.05 dB of the 15.50
 | MS-LapSRN | 0.22M | 37.78 / 0.960 | 33.28 / 0.915 | 32.05 / 0.898 | 31.15 / 0.919 | 37.78 / 0.976 |
 | MSWSR | 1.23M | 37.49 / 0.9582&dagger; | 33.23 / 0.9123 | 31.88 / 0.8929 | 31.14 / 0.9169 | 37.32 / 0.9733 |
 | MLWAN | 1.23M | 37.68 / 0.9589 | 33.47 / **0.9227** | 31.96 / 0.8974 | 31.34 / 0.9309 | 37.39 / 0.9733 |
+| CGSSR-LTE | 1.45M | 37.96 / – | 33.61 / – | 32.18 / – | 32.16 / – | 38.52 / – |
 | MDSR | 8.00M | 38.11 / 0.9602 | 33.85 / 0.9198 | 32.29 / 0.9007 | 32.84 / 0.9347 | 39.09 / **0.9779**&dagger; |
 | ProSR-L | 15.50M | **38.17** / 0.9608&dagger; | **34.00** / 0.921 | **32.34** / **0.902** | 32.91 / 0.935 | **39.10** / 0.9777&dagger; |
 | **PMS-SR (ours)** | **7.95M** | 38.16 / **0.9611** | 33.95 / 0.9200 | 32.31 / 0.9002 | **33.03** / **0.9366** | 38.92 / 0.9777 |
 
 </details>
 
-<sub>&dagger;Measured by us from the authors' released weights to fill an unpublished entry; other baseline values are published results. MDSR does not support ×8. PMS-SR is trained on DF2K, and a DIV2K-only control in the paper separates the effect of the training data from that of the architecture.</sub>
+<sub>&dagger;Measured by us from the authors' released weights to fill an unpublished entry; other baseline values are published results. MDSR does not support ×8. CGSSR-LTE is an arbitrary-scale model, listed with its published PSNR. PMS-SR is trained on DF2K, and a DIV2K-only control in the paper separates the effect of the training data from that of the architecture.</sub>
 
 ## One network instead of a three-model ladder
 
@@ -83,11 +87,11 @@ At ×2, PMS-SR gives the best Urban100 result and is within 0.05 dB of the 15.50
 
 ![Mean x8 PSNR vs. parameters needed for x2/x4/x8](assets/ladder_scatter_x8_mean.png)
 
-<sub>Single-scale methods count as three models; where only one size is reported, it is tripled (values from the paper's Tables I and III).</sub>
+<sub>Single-scale methods count as three models; where only one size is reported, it is tripled (values from the paper's Tables I and II).</sub>
 
 ## Highlights
 
-- **One pass, three outputs.** A single forward pass delivers ×2, ×4, and ×8.
+- **One pass, three outputs.** A single forward pass delivers ×2, ×4, and ×8, and all attention runs on the low-resolution grid.
 - **Cascaded bicubic anchors.** Each scale is a residual over the detached bicubic upsampling of the previous scale's prediction. With Dirac and zero initialization, training starts exactly from the bicubic cascade. Replacing the cascade with a direct anchor costs 2.4 dB at ×8 on BSD100.
 - **Inter-scale mutual refinement (IMR).** Space-to-depth feedback, deformable cross-scale alignment, and per-pixel fusion let the scales exchange information in both directions, so ×8 features also refine the ×2 output. The whole ×8 refinement runs on the ×4 grid.
 
@@ -107,7 +111,7 @@ Urban100 img_052, ×4:
 
 ## Reference comparison with single-scale models
 
-Single-scale models are trained for one factor each, so a ladder of them needs at least 4.5× the parameters of PMS-SR. At ×8, PMS-SR outperforms DRN-L on all five benchmarks and leads all compared models on Urban100. Elsewhere, the strongest ×8-specific models are ahead by at most 0.13 dB. At ×2 and ×4, SwinIR-M remains ahead by up to 1.00 and 0.34 dB, respectively.
+Single-scale models are trained for one factor each, so this comparison favors them: every one of them spends all of its parameters on a single factor, and PMS-SR is smaller than any of them. A ×2/×4/×8 set of single-scale models needs at least 35.70M parameters (three SwinIR-M models), 4.5× the size of PMS-SR, and many recent single-scale models have no ×8 model at all. At ×8, PMS-SR outperforms DRN-L on all five benchmarks and leads all compared models on Urban100. Elsewhere, the strongest ×8-specific models are ahead by at most 0.13 dB. At ×2 and ×4, single-scale models remain ahead: SwinIR-M by up to 1.00 and 0.34 dB, and the more recent MAT by up to 1.30 and 0.61 dB.
 
 <details>
 <summary>Show the ×8 table and the SwinIR-M gaps</summary>
@@ -119,6 +123,7 @@ Single-scale models are trained for one factor each, so a ladder of them needs a
 | DBPN-RES-MR64-3 | 23.1M | 27.51 / 0.793 | 25.41 / **0.657** | 25.05 / 0.607 | 23.20 / 0.652 | **25.71** / 0.813 |
 | SwinIR-M | 12.1M | **27.55** / 0.7941 | **25.46** / 0.6568 | 25.04 / 0.6092 | 23.17 / 0.6547 | 25.55 / **0.8132** |
 | RDRN | ≈36.4M | 27.52 / **0.7953** | 25.40 / 0.6548 | **25.10** / 0.6084 | 23.20 / 0.6511 | 25.66 / 0.8114 |
+| CLSR | 14.4M | 27.50 / 0.7921 | 25.35 / 0.6546 | 25.02 / 0.6070 | 23.22 / 0.6547 | 25.47 / 0.8102 |
 | **PMS-SR (one pass)** | 7.95M* | 27.49 / 0.7922 | 25.37 / 0.6551 | 25.07 / **0.6094** | **23.36** / **0.6593** | 25.58 / 0.8129 |
 
 PSNR gap to SwinIR-M (dB):
@@ -139,7 +144,7 @@ PSNR gap to SwinIR-M (dB):
 ## Evaluation protocol
 
 - MATLAB-bicubic degradation; Y-channel PSNR/SSIM with a border of *s* pixels removed at scale *s*.
-- Baselines with released weights (SwinIR-M, RCAN, DRN-L, MDSR, MSWSR, ProSR-L) were re-evaluated under the same protocol.
+- Baselines with released weights (SwinIR-M, RCAN, DRN-L, MDSR, MSWSR, ProSR-L, and MAT) were re-evaluated under the same protocol.
 - Paired per-image Wilcoxon signed-rank tests with Holm correction are reported where PMS-SR loses as well as where it wins.
 - A DIV2K-only control with one third of the schedule separates the effect of the architecture from that of the training data.
 
@@ -150,11 +155,14 @@ The training and evaluation code and the pretrained weights will be released in 
 ## Citation
 
 ```bibtex
-@article{lin2026progressive,
-  title={Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors and Inter-Scale Mutual Refinement},
-  author={Lin, Chun-An and Chang, Yu-Chia and Fan, Chi-Mao and Ouyang, Yen-Chieh and Liu, Tsung-Jung},
-  journal={arXiv preprint arXiv:2611.03390},
-  year={2026}
+@misc{lin2026progressivemultiscalesuperresolutioncascaded,
+      title={Progressive Multi-Scale Super-Resolution via Cascaded Bicubic Anchors and Inter-Scale Mutual Refinement}, 
+      author={Chun-An Lin and Yu-Chia Chang and Chi-Mao Fan and Yen-Chieh Ouyang and Tsung-Jung Liu},
+      year={2026},
+      eprint={2611.03390},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2611.03390}, 
 }
 ```
 
